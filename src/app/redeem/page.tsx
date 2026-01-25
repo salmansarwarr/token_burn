@@ -30,6 +30,7 @@ export default function RedeemPage() {
     const [loadingEligibility, setLoadingEligibility] = useState(false);
     const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
     const [showBurnWarning, setShowBurnWarning] = useState(false);
+    const [copied, setCopied] = useState(false);
 
     // Map step to step number
     const getCurrentStepNumber = () => {
@@ -39,6 +40,18 @@ export default function RedeemPage() {
         if (step === "burning" || step === "confirming") return 4;
         if (step === "verifying" || step === "success") return 5;
         return 1;
+    };
+
+    const handleCopyCode = async () => {
+        if (!promoCode) return;
+        
+        try {
+            await navigator.clipboard.writeText(promoCode);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error("Failed to copy:", err);
+        }
     };
 
     // Check eligibility on load
@@ -336,14 +349,10 @@ export default function RedeemPage() {
                                         {promoCode}
                                     </p>
                                     <button
-                                        onClick={() => {
-                                            navigator.clipboard.writeText(
-                                                promoCode,
-                                            );
-                                        }}
+                                        onClick={handleCopyCode}
                                         className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg transition-colors"
                                     >
-                                        📋 Copy Code
+                                        {copied ? "✓ Copied!" : "📋 Copy Code"}
                                     </button>
                                 </div>
 

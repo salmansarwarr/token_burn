@@ -104,7 +104,7 @@ export function SearchRedemption() {
                                         Tx Hash:
                                     </span>
                                     <a
-                                        href={`https://etherscan.io/tx/${result.redemption.txHash}`}
+                                        href={`https://sepolia.etherscan.io/tx/${result.redemption.txHash}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="font-mono text-blue-600 hover:text-blue-700 dark:text-blue-400"

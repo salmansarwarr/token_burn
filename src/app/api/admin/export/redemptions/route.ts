@@ -29,7 +29,7 @@ export async function GET() {
             ...redemptions.map((r) => [
                 r.walletAddress,
                 r.txHash,
-                r.burnAmount,
+                BigInt(r.burnAmount) / BigInt(10 ** 18),
                 r.promoCode?.codeHash || "N/A",
                 r.createdAt.toISOString(),
             ]),

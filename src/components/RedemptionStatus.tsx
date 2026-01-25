@@ -97,7 +97,7 @@ export function RedemptionStatus() {
                         Transaction Hash
                     </span>
                     <a
-                        href={`https://etherscan.io/tx/${redemption.txHash}`}
+                        href={`https://sepolia.etherscan.io/tx/${redemption.txHash}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm font-mono text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"

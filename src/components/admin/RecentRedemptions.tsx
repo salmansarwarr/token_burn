@@ -125,7 +125,7 @@ export function RecentRedemptions() {
                                         </td>
                                         <td className="py-3 px-2">
                                             <a
-                                                href={`https://etherscan.io/tx/${redemption.txHash}`}
+                                                href={`https://sepolia.etherscan.io/tx/${redemption.txHash}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="font-mono text-xs text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
