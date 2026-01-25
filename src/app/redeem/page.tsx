@@ -248,7 +248,7 @@ export default function RedeemPage() {
 
                                 {turnstileToken && (
                                     <button
-                                        onClick={() => executeBurn()}
+                                        onClick={() => executeBurn(turnstileToken)}
                                         className="w-full py-4 px-6 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-lg"
                                     >
                                         🔥 I Understand - Burn Tokens Now
