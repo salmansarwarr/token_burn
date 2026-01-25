@@ -1,0 +1,82 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model PromoCodes {
+  id            String        @id @default(cuid())
+  codeHash      String        @unique @map("code_hash")
+  encryptedCode String        @map("encrypted_code")
+  status        CodeStatus    @default(AVAILABLE)
+  expiresAt     DateTime?     @map("expires_at")
+  createdAt     DateTime      @default(now()) @map("created_at")
+  batchId       String?       @map("batch_id")
+  redemptions   Redemptions[]
+
+  @@index([status])
+  @@index([batchId])
+  @@map("promo_codes")
+}
+
+model Redemptions {
+  id            String     @id @default(cuid())
+  walletAddress String     @map("wallet_address")
+  txHash        String     @unique @map("tx_hash")
+  burnAmount    String     @map("burn_amount")
+  promoCodeId   String     @map("promo_code_id")
+  promoCode     PromoCodes @relation(fields: [promoCodeId], references: [id])
+  createdAt     DateTime   @default(now()) @map("created_at")
+
+  @@index([walletAddress])
+  @@index([txHash])
+  @@index([createdAt])
+  @@map("redemptions")
+}
+
+model AdminUsers {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String   @map("password_hash")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@map("admin_users")
+}
+
+model RateLimitEntry {
+  id          String   @id @default(cuid())
+  identifier  String
+  type        String
+  count       Int      @default(1)
+  windowStart DateTime @default(now()) @map("window_start")
+  expiresAt   DateTime @map("expires_at")
+
+  @@unique([identifier, type])
+  @@index([expiresAt])
+  @@map("rate_limit_entries")
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  action    String
+  userId    String?  @map("user_id")
+  metadata  Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}
+
+enum CodeStatus {
+  AVAILABLE
+  ALLOCATED
+  REDEEMED
+  EXPIRED
+}
