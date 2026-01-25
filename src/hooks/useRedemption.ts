@@ -12,7 +12,7 @@ const burnAbi = parseAbi(["function burn(uint256 amount)"]);
 
 export function useRedemption() {
     const { address } = useAccount();
-    const [step, setStep] = useState
+    const [step, setStep] = useState<
         "idle" | "burning" | "confirming" | "verifying" | "success" | "error"
     >("idle");
     const [error, setError] = useState<string | null>(null);
