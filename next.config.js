@@ -3,7 +3,12 @@ const nextConfig = {
     webpack: (config, { isServer }) => {
         if (isServer) {
             config.externals.push('@prisma/client')
+            config.externals.push('pino-pretty', 'encoding');
         }
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            "@react-native-async-storage/async-storage": false,
+        };
         return config
     },
     async headers() {
