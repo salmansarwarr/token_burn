@@ -1,20 +1,15 @@
 import { http, createConfig } from "wagmi";
 import { mainnet, sepolia } from "wagmi/chains";
-import { coinbaseWallet, injected, walletConnect } from "wagmi/connectors";
+import { getDefaultConfig } from "connectkit";
 
-export const config = createConfig({
-    chains: [mainnet, sepolia],
-    connectors: [
-        injected(),
-        walletConnect({
-            projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
-        }),
-        coinbaseWallet({
-            appName: "Armchair",
-        }),
-    ],
-    transports: {
-        [mainnet.id]: http(),
-        [sepolia.id]: http(),
-    },
-});
+export const config = createConfig(
+    getDefaultConfig({
+        chains: [mainnet, sepolia],
+        transports: {
+            [mainnet.id]: http(),
+            [sepolia.id]: http(),
+        },
+        walletConnectProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
+        appName: "Armchair",
+    })
+);
