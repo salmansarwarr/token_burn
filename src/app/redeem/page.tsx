@@ -181,8 +181,8 @@ export default function RedeemPage() {
                                                 <li>
                                                     Burn{" "}
                                                     {
-                                                        process.env
-                                                            .NEXT_PUBLIC_BURN_AMOUNT
+                                                            BigInt(process.env
+                                                            .NEXT_PUBLIC_BURN_AMOUNT || 1) / BigInt(10 ** 18)
                                                     }{" "}
                                                     token(s)
                                                 </li>
