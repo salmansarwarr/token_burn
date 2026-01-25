@@ -26,32 +26,40 @@ export function useRedemption() {
     // Execute burn transaction
     const executeBurn = useCallback(async () => {
         if (!address) return;
-
+    
         setStep("burning");
         setError(null);
-
+    
         try {
-            // Need to fetch BURN_AMOUNT from config/env on client side
-            // Ideally passed as prop or fetched from API
-            // For now using hardcoded or env if available to client
             const amount = BigInt(
                 process.env.NEXT_PUBLIC_BURN_AMOUNT || "1000000000000000000",
             );
-
+    
+            // Optional: Add balance check here using useReadContract
+            // to verify user has enough tokens before attempting burn
+    
             const hash = await writeContractAsync({
                 address: process.env
                     .NEXT_PUBLIC_TOKEN_CONTRACT_ADDRESS as `0x${string}`,
                 abi: burnAbi,
                 functionName: "burn",
                 args: [amount],
+                gas: BigInt("150000"), // Reasonable gas limit for a burn operation
             });
-
+    
             setTxHash(hash);
             setStep("confirming");
             return hash;
         } catch (err: any) {
             console.error("Burn failed:", err);
-            setError(err.message || "Transaction failed");
+            
+            // Provide more helpful error messages
+            if (err.message?.includes("gas limit")) {
+                setError("Transaction gas limit exceeded. Please try again.");
+            } else {
+                setError(err.message || "Transaction failed");
+            }
+            
             setStep("error");
             return null;
         }
