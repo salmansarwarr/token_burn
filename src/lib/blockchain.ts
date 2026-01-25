@@ -4,6 +4,7 @@ import {
     parseAbi,
     type Address,
     type Hash,
+    decodeEventLog
 } from "viem";
 import { mainnet, sepolia } from "viem/chains";
 import { config } from "./config";
@@ -110,7 +111,7 @@ export async function verifyBurnTransaction(
             }
 
             try {
-                const decoded = client.decodeEventLog({
+                const decoded = decodeEventLog({
                     abi: erc20Abi,
                     data: log.data,
                     topics: log.topics,
@@ -135,7 +136,7 @@ export async function verifyBurnTransaction(
         }
 
         // Get burn amount from first burn event
-        const burnEvent = client.decodeEventLog({
+        const burnEvent = decodeEventLog({
             abi: erc20Abi,
             data: burnEvents[0].data,
             topics: burnEvents[0].topics,
