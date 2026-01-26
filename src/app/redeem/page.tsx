@@ -165,7 +165,7 @@ export default function RedeemPage() {
                                                 Your balance:{" "}
                                                 <strong>
                                                 {BigInt(
-                                                        eligibility.balance||
+                                                        parseFloat(eligibility.balance)||
                                                             1
                                                     ) / BigInt(10 ** 18)} tokens
                                                 </strong>
