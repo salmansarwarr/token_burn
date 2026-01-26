@@ -44,7 +44,7 @@ export default function RedeemPage() {
 
     const handleCopyCode = async () => {
         if (!promoCode) return;
-        
+
         try {
             await navigator.clipboard.writeText(promoCode);
             setCopied(true);
@@ -164,7 +164,10 @@ export default function RedeemPage() {
                                             <p className="text-sm text-green-800 dark:text-green-200">
                                                 Your balance:{" "}
                                                 <strong>
-                                                    {eligibility.balance} tokens
+                                                {BigInt(
+                                                        eligibility.balance||
+                                                            1
+                                                    ) / BigInt(10 ** 18)} tokens
                                                 </strong>
                                             </p>
                                         </div>
@@ -180,10 +183,11 @@ export default function RedeemPage() {
                                                 </li>
                                                 <li>
                                                     Burn{" "}
-                                                    {
-                                                            BigInt(process.env
-                                                            .NEXT_PUBLIC_BURN_AMOUNT || 1) / BigInt(10 ** 18)
-                                                    }{" "}
+                                                    {BigInt(
+                                                        process.env
+                                                            .NEXT_PUBLIC_BURN_AMOUNT ||
+                                                            1
+                                                    ) / BigInt(10 ** 18)}{" "}
                                                     token(s)
                                                 </li>
                                                 <li>
@@ -217,12 +221,12 @@ export default function RedeemPage() {
                                                 {eligibility?.reasons?.map(
                                                     (
                                                         reason: string,
-                                                        i: number,
+                                                        i: number
                                                     ) => (
                                                         <li key={i}>
                                                             {reason}
                                                         </li>
-                                                    ),
+                                                    )
                                                 )}
                                             </ul>
                                         </div>
@@ -261,7 +265,9 @@ export default function RedeemPage() {
 
                                 {turnstileToken && (
                                     <button
-                                        onClick={() => executeBurn(turnstileToken)}
+                                        onClick={() =>
+                                            executeBurn(turnstileToken)
+                                        }
                                         className="w-full py-4 px-6 bg-red-600 hover:bg-red-700 text-white font-bold rounded-lg transition-colors text-lg"
                                     >
                                         🔥 I Understand - Burn Tokens Now
