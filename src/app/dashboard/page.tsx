@@ -5,11 +5,25 @@ import { useSIWE } from "@/hooks/useSIWE";
 import { useAccount } from "wagmi";
 import { RedemptionStatus } from "@/components/RedemptionStatus";
 import Link from "next/link";
+import { useEffect } from "react";
 
 export default function Dashboard() {
     const { address, isAuthenticated, isLoading } = useAuth();
     const { signOut } = useSIWE();
-    const { isConnected } = useAccount();
+    const { isConnected, address: connectedAddress } = useAccount();
+
+    // Check for address mismatch
+    const addressMismatch =
+        address &&
+        connectedAddress &&
+        address.toLowerCase() !== connectedAddress.toLowerCase();
+
+    useEffect(() => {
+        // Auto sign out if addresses don't match
+        if (addressMismatch) {
+            signOut();
+        }
+    }, [addressMismatch, signOut]);
 
     if (isLoading) {
         return (
@@ -19,12 +33,16 @@ export default function Dashboard() {
         );
     }
 
-    if (!isAuthenticated) {
+    if (!isAuthenticated || addressMismatch) {
         return (
             <div className="flex min-h-screen items-center justify-center">
                 <div className="text-center space-y-4">
                     <h1 className="text-2xl font-bold">Access Denied</h1>
-                    <p>Please sign in to access the dashboard</p>
+                    <p>
+                        {addressMismatch
+                            ? "Wallet address mismatch. Please sign in again."
+                            : "Please sign in to access the dashboard"}
+                    </p>
                     <Link href="/" className="text-blue-600 hover:underline">
                         Go to Home
                     </Link>
@@ -32,7 +50,6 @@ export default function Dashboard() {
             </div>
         );
     }
-
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto space-y-8">

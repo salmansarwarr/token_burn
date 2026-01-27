@@ -1,0 +1,6 @@
+code,expiresAt,maxUses,campaign
+SINGLE2024,2024-12-31T23:59:59Z,1,test_campaign
+MULTI50,2025-06-30T23:59:59Z,50,influencer_test
+UNLIMITED,,,loyalty_program
+EXPIRED_CODE,2020-01-01T00:00:00Z,1,old_campaign
+WELCOME10,2025-12-31T23:59:59Z,10,onboarding

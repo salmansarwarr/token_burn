@@ -16,6 +16,7 @@ export async function POST(request: NextRequest) {
 
         const formData = await request.formData();
         const file = formData.get("file") as File;
+        const campaign = formData.get("campaign") as string | null;
 
         if (!file) {
             return NextResponse.json(
@@ -35,12 +36,19 @@ export async function POST(request: NextRequest) {
         }
 
         const batchId = uuidv4();
-        const result = await importPromoCodes(codes, batchId, session.adminId);
+        const result = await importPromoCodes(
+            codes,
+            batchId,
+            session.adminId,
+            campaign || undefined,
+        );
 
         return NextResponse.json({
             success: true,
             imported: result.imported,
             duplicates: result.duplicates,
+            expired: result.expired,
+            warnings: result.warnings,
             batchId,
         });
     } catch (error: any) {

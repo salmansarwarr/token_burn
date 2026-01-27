@@ -9,6 +9,7 @@ A production-ready Web3 authentication system built with Next.js 13, featuring S
 - ✅ **Secure Sessions** - iron-session with httpOnly, secure cookies
 - ✅ **Database** - Prisma ORM with PostgreSQL
 - ✅ **Admin Panel** - Secure admin authentication with bcrypt password hashing
+- ✅ **Promo Code System** - Secure code management with hashing, encryption, and usage tracking ([See docs](docs/PROMO_CODES.md))
 - ✅ **Route Protection** - Next.js middleware for protected routes
 - ✅ **Health Check** - API endpoint for monitoring
 - ✅ **TypeScript** - Full type safety throughout
