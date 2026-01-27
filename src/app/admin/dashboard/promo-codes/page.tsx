@@ -2,11 +2,12 @@
 
 import { InventoryStats } from "@/components/admin/InventoryStats";
 import { CSVUpload } from "@/components/admin/CSVUpload";
+import { PromoCodeList } from "@/components/admin/PromoCodeList";
 
 export default function AdminPromoCodes() {
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
-            <div className="max-w-6xl mx-auto">
+            <div className="max-w-7xl mx-auto">
                 <div className="flex justify-between items-center mb-8">
                     <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
                         Promo Code Management
@@ -19,9 +20,11 @@ export default function AdminPromoCodes() {
                     </a>
                 </div>
 
+                {/* Enhanced Statistics */}
                 <InventoryStats />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Upload and Export Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                     <div>
                         <CSVUpload />
                     </div>
@@ -68,6 +71,9 @@ export default function AdminPromoCodes() {
                         </div>
                     </div>
                 </div>
+
+                {/* Detailed Code List */}
+                <PromoCodeList />
             </div>
         </div>
     );

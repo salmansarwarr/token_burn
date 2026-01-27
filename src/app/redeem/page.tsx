@@ -10,6 +10,7 @@ import { CampaignInfo } from "@/components/CampaignInfo";
 import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import Link from "next/link";
+import { formatUnits } from "viem";
 
 const REDEMPTION_STEPS = ["Connect", "Verify", "CAPTCHA", "Burn", "Claim"];
 
@@ -62,6 +63,7 @@ export default function RedeemPage() {
                 .then((res) => res.json())
                 .then((data) => {
                     setEligibility(data);
+                    console.log(data);
                     setLoadingEligibility(false);
                 })
                 .catch((err) => {
@@ -164,10 +166,13 @@ export default function RedeemPage() {
                                             <p className="text-sm text-green-800 dark:text-green-200">
                                                 Your balance:{" "}
                                                 <strong>
-                                                {BigInt(
-                                                        parseFloat(eligibility.balance)||
-                                                            1
-                                                    ) / BigInt(10 ** 18)} tokens
+                                                    {formatUnits(
+                                                        BigInt(
+                                                            eligibility.balance,
+                                                        ),
+                                                        18,
+                                                    )}{" "}
+                                                    tokens
                                                 </strong>
                                             </p>
                                         </div>
@@ -186,7 +191,7 @@ export default function RedeemPage() {
                                                     {BigInt(
                                                         process.env
                                                             .NEXT_PUBLIC_BURN_AMOUNT ||
-                                                            1
+                                                            1,
                                                     ) / BigInt(10 ** 18)}{" "}
                                                     token(s)
                                                 </li>
@@ -221,12 +226,12 @@ export default function RedeemPage() {
                                                 {eligibility?.reasons?.map(
                                                     (
                                                         reason: string,
-                                                        i: number
+                                                        i: number,
                                                     ) => (
                                                         <li key={i}>
                                                             {reason}
                                                         </li>
-                                                    )
+                                                    ),
                                                 )}
                                             </ul>
                                         </div>
