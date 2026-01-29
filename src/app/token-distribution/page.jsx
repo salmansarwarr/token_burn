@@ -67,6 +67,53 @@ export default function TokenDistributionPage() {
                     </p>
                 </div>
 
+                {/* Sepolia Testnet Banner */}
+                <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl shadow-lg p-6 mb-8 text-white">
+                    <h3 className="text-xl font-bold mb-4 flex items-center">
+                        <span className="text-2xl mr-2">🧪</span>
+                        Audit environment: Sepolia testnet
+                    </h3>
+                    <div className="space-y-3 text-sm">
+                        <div>
+                            <p className="font-semibold mb-1">
+                                Token (Sepolia):
+                            </p>
+                            <a
+                                href="https://sepolia.etherscan.io/address/0x8e378b7Fd5ebFD7e94A21598a582362F2e04E015"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-mono text-white/90 hover:text-white underline break-all"
+                            >
+                                https://sepolia.etherscan.io/address/0x8e378b7Fd5ebFD7e94A21598a582362F2e04E015
+                            </a>
+                        </div>
+                        <div>
+                            <p className="font-semibold mb-1">
+                                Treasury (Safe, Sepolia):
+                            </p>
+                            <a
+                                href="https://sepolia.etherscan.io/address/0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-mono text-white/90 hover:text-white underline break-all"
+                            >
+                                https://sepolia.etherscan.io/address/0xC6C1BCa45ae7836EFCf252a93eb378957E79150A
+                            </a>
+                        </div>
+                        <div>
+                            <p className="font-semibold mb-1">Safe App:</p>
+                            <a
+                                href="https://app.safe.global/home?safe=sep:0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="font-mono text-white/90 hover:text-white underline break-all"
+                            >
+                                https://app.safe.global/home?safe=sep:0xC6C1BCa45ae7836EFCf252a93eb378957E79150A
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 {/* Token Identification */}
                 <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8 border border-gray-200 dark:border-gray-700">
                     <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
@@ -218,7 +265,7 @@ export default function TokenDistributionPage() {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <a
-                            href={`https://etherscan.io/address/${TREASURY_ADDRESS}`}
+                            href="https://sepolia.etherscan.io/address/0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
@@ -227,7 +274,7 @@ export default function TokenDistributionPage() {
                             View Treasury on Etherscan
                         </a>
                         <a
-                            href={`https://app.safe.global/home?safe=eth:${TREASURY_ADDRESS}`}
+                            href="https://app.safe.global/home?safe=sep:0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white rounded-lg font-semibold hover:bg-white/20 transition-colors"
@@ -243,6 +290,10 @@ export default function TokenDistributionPage() {
                     <p>
                         This plan may be updated subject to approvals by the
                         multi-signature treasury.
+                    </p>
+                    <p className="mt-4 font-medium text-orange-600 dark:text-orange-400">
+                        Mainnet deployment details will be published on this
+                        same page after deployment.
                     </p>
                     <p className="mt-2">
                         Last updated: January 2026 • Version 1.0
