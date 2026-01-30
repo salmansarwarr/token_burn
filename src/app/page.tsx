@@ -140,7 +140,7 @@ export default function Home() {
                         Admin Login
                     </Link>
                     <Link
-                        href="/admin/token-distribution"
+                        href="/token-distribution"
                         className="hover:text-gray-700 dark:hover:text-gray-200"
                     >
                         Token Distribution Page
