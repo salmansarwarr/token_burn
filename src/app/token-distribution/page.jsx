@@ -68,7 +68,7 @@ export default function TokenDistributionPage() {
                 </div>
 
                 {/* Sepolia Testnet Banner */}
-                <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl shadow-lg p-6 mb-8 text-white">
+                {/* <div className="bg-gradient-to-r from-orange-500 to-red-500 rounded-2xl shadow-lg p-6 mb-8 text-white">
                     <h3 className="text-xl font-bold mb-4 flex items-center">
                         <span className="text-2xl mr-2">🧪</span>
                         Audit environment: Sepolia testnet
@@ -112,7 +112,7 @@ export default function TokenDistributionPage() {
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Token Identification */}
                 <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8 border border-gray-200 dark:border-gray-700">
@@ -265,7 +265,7 @@ export default function TokenDistributionPage() {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <a
-                            href="https://sepolia.etherscan.io/address/0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
+                            href="https://etherscan.io/address/0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center px-6 py-3 bg-white text-blue-600 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
@@ -291,12 +291,8 @@ export default function TokenDistributionPage() {
                         This plan may be updated subject to approvals by the
                         multi-signature treasury.
                     </p>
-                    <p className="mt-4 font-medium text-orange-600 dark:text-orange-400">
-                        Mainnet deployment details will be published on this
-                        same page after deployment.
-                    </p>
                     <p className="mt-2">
-                        Last updated: January 2026 • Version 1.0
+                        Last updated: February 2026 • Version 1.0
                     </p>
                 </div>
             </main>

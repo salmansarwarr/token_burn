@@ -1,14 +1,15 @@
 import { http, createConfig } from "wagmi";
-import { sepolia } from "wagmi/chains";
+import { mainnet } from "wagmi/chains";
 import { getDefaultConfig } from "connectkit";
 
 export const config = createConfig(
     getDefaultConfig({
-        chains: [sepolia],
+        chains: [mainnet],
         transports: {
-            [sepolia.id]: http(),
+            [mainnet.id]: http(),
         },
-        walletConnectProjectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
+        walletConnectProjectId:
+            process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID!,
         appName: "Armchair",
-    })
+    }),
 );
