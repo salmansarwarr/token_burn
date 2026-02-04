@@ -274,7 +274,7 @@ export default function TokenDistributionPage() {
                             View Treasury on Etherscan
                         </a>
                         <a
-                            href="https://app.safe.global/home?safe=sep:0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
+                            href="https://app.safe.global/home?safe=eth:0xC6C1BCa45ae7836EFCf252a93eb378957E79150A"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center px-6 py-3 bg-white/10 backdrop-blur-sm text-white border-2 border-white rounded-lg font-semibold hover:bg-white/20 transition-colors"
@@ -282,6 +282,33 @@ export default function TokenDistributionPage() {
                             <span className="mr-2">🛡️</span>
                             View on Safe App
                         </a>
+                    </div>
+                </section>
+
+                {/* Security Audit */}
+                <section className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 mb-8 border border-gray-200 dark:border-gray-700">
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                        <span className="text-3xl mr-3">🛡️</span>
+                        Security Audit
+                    </h2>
+                    <div className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 rounded-xl border border-green-200 dark:border-green-800">
+                        <p className="text-gray-900 dark:text-white mb-4">
+                            <strong>CertiK Assessment:</strong> The NRWD smart
+                            contract was assessed by CertiK, a leading
+                            blockchain security firm (final report published on
+                            Jan 30, 2026).
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                            See{" "}
+                            <a
+                                target="_blank"
+                                className="underline text-blue-600 dark:text-blue-400"
+                                href="/audit-report.pdf"
+                            >
+                                Audit report
+                            </a>{" "}
+                            for details.
+                        </p>
                     </div>
                 </section>
 

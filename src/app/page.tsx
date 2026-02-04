@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { useAccount } from "wagmi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { formatTokenNumber } from "@/lib/formatTokenAmount";
 
 export default function Home() {
     const { isConnected } = useAccount();
@@ -35,6 +36,17 @@ export default function Home() {
                 {/* Campaign Information */}
                 <CampaignInfo />
 
+                {/* Utility Token Statement */}
+                <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-4">
+                    <p className="text-sm text-blue-900 dark:text-blue-200 text-center">
+                        <strong>NRWD is a utility token</strong> for the Nossa
+                        Rewards platform. It provides access to rewards (such as
+                        promotional codes) and does not grant holders any
+                        ownership rights, equity participation, or rights to
+                        profits.
+                    </p>
+                </div>
+
                 {/* Campaign Stats */}
                 {stats && (
                     <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 border border-gray-200 dark:border-gray-700">
@@ -57,10 +69,12 @@ export default function Home() {
                             </div>
                             <div>
                                 <div className="text-3xl font-bold text-purple-600 dark:text-purple-400">
-                                    {stats.burnAmount || "1"}
+                                    {stats.burnAmount
+                                        ? formatTokenNumber(stats.burnAmount)
+                                        : "3,000"}
                                 </div>
                                 <div className="text-sm text-gray-600 dark:text-gray-400">
-                                    Tokens to Burn
+                                    NRWD to Burn
                                 </div>
                             </div>
                             <div>

@@ -1,11 +1,15 @@
 "use client";
 
+import { formatTokenAmount } from "@/lib/formatTokenAmount";
+
 interface CampaignInfoProps {
     compact?: boolean;
 }
 
 export function CampaignInfo({ compact = false }: CampaignInfoProps) {
-    const burnAmount = process.env.NEXT_PUBLIC_BURN_AMOUNT || "1";
+    const burnAmountRaw =
+        process.env.NEXT_PUBLIC_BURN_AMOUNT || "1000000000000000000";
+    const burnAmount = formatTokenAmount(burnAmountRaw);
     const campaignName =
         process.env.NEXT_PUBLIC_CAMPAIGN_NAME ||
         "Token Burn Redemption Campaign";
@@ -20,8 +24,8 @@ export function CampaignInfo({ compact = false }: CampaignInfoProps) {
                     🔥 How It Works
                 </h3>
                 <p className="text-sm text-gray-700 dark:text-gray-300">
-                    Burn {burnAmount} token(s) to receive a single-use promo
-                    code. This action is <strong>irreversible</strong>.
+                    Burn {burnAmount} to receive a single-use promo code. This
+                    action is <strong>irreversible</strong>.
                 </p>
             </div>
         );
@@ -132,7 +136,7 @@ export function CampaignInfo({ compact = false }: CampaignInfoProps) {
                         </div>
                         <div>
                             <h3 className="font-semibold text-gray-900 dark:text-white">
-                                Burn {burnAmount} Token(s)
+                                Burn {burnAmount}
                             </h3>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                                 Permanently destroy tokens (requires gas fees)
