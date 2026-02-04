@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 export function Footer() {
     return (
         <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-12">
@@ -12,10 +14,19 @@ export function Footer() {
                         ecosystem and is not an investment; holding NRWD does
                         not imply any expectation of profit or ownership rights.
                     </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-500 mt-3">
-                        © {new Date().getFullYear()} Nossa Rewards. All rights
-                        reserved.
-                    </p>
+                    <div className="mt-3 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-500">
+                        <span>
+                            © {new Date().getFullYear()} Nossa Rewards. All
+                            rights reserved.
+                        </span>
+                        <span>•</span>
+                        <Link
+                            href="/privacy-policy"
+                            className="text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                            Privacy Policy
+                        </Link>
+                    </div>
                 </div>
             </div>
         </footer>
