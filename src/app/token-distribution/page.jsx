@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { Header } from "@/components/Header";
 
 const TREASURY_ADDRESS = "0xC6C1BCa45ae7836EFCf252a93eb378957E79150A";
 const SIGNERS = [
@@ -33,23 +34,7 @@ export default function TokenDistributionPage() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-            {/* Header */}
-            <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
-                <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <Link
-                        href="/"
-                        className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-                    >
-                        Nossa Rewards
-                    </Link>
-                    <Link
-                        href="/"
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
-                    >
-                        ← Back to Home
-                    </Link>
-                </div>
-            </header>
+            <Header showHomeLink />
 
             {/* Main Content */}
             <main className="max-w-6xl mx-auto px-6 py-12">
